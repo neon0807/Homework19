@@ -1,5 +1,7 @@
 package org.example.introduction;
 
+import org.example.introduction.transport.Car;
+import org.example.introduction.transport.Moto;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main1 {
@@ -7,25 +9,14 @@ public class Main1 {
     public static void main(String[] args) {
 
         ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("applicationContext1.xml");
+                new ClassPathXmlApplicationContext("applicationContext2.xml");
 
-        Car car1 = context.getBean("customCar", Car.class);
-        Car car2 = context.getBean("customCar", Car.class);
+        Moto moto = context.getBean("moto", Moto.class);
+        Moto moto1 = context.getBean("moto", Moto.class);
 
-        System.out.println(car1 == car2);
-        System.out.println(car1);
-        System.out.println(car2);
-
-        context.close();
-
-
-
-
-        ClassPathXmlApplicationContext context1 =
-                new ClassPathXmlApplicationContext("applicationContext1.xml");
-
-        Person1 person = context1.getBean("customPerson1", Person1.class);
-        person.gotIntoTheCar();
+        System.out.println(moto1 == moto);
+        System.out.println(moto);
+        System.out.println(moto1);
 
         context.close();
     }

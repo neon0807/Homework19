@@ -1,5 +1,7 @@
 package org.example.introduction;
 
+import org.example.introduction.transport.Car;
+
 public class Person1 {
     private Car car;
 

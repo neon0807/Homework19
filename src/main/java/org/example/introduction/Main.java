@@ -1,34 +1,46 @@
 package org.example.introduction;
 
+import org.example.introduction.transport.Car;
+import org.example.introduction.transport.Moto;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
 
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        Car car1 = context.getBean("customCar", Car.class);
-        car1.go();
+        ClassPathXmlApplicationContext context2 =
+                new ClassPathXmlApplicationContext("applicationContext2.xml");
 
-        Car car2 = context.getBean("customCar", Car.class);
+        Moto moto = context2.getBean("moto", Moto.class);
+        moto.go();
 
-        System.out.println(car1 == car2);
-        System.out.println(car1);
-        System.out.println(car2);
-
-        context.close();
+        context2.close();
+        System.out.println("======================");
 
 
+        ClassPathXmlApplicationContext context3 =
+                new ClassPathXmlApplicationContext("applicationContext2.xml");
 
-
-        ClassPathXmlApplicationContext context1 =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
-
-        Person person = context1.getBean("customPerson", Person.class);
+        Person person = context3.getBean("person", Person.class);
         person.gotIntoTheCar();
 
-        context.close();
+        context3.close();
+
+        System.out.println("=====================");
+
+        ClassPathXmlApplicationContext context4 =
+                new ClassPathXmlApplicationContext("applicationContext2.xml");
+
+        Car car = context4.getBean("car", Car.class);
+        Car car1 = context4.getBean("car", Car.class);
+
+        System.out.println(car1 == car);
+        System.out.println(car1);
+        System.out.println(car);
+
+        context4.close();
+
+
 
     }
 }
